@@ -14,8 +14,8 @@
  *
  * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author <Mohamed Eltyar>
+ * @date <05/04/2020 >
  *
  */
 
@@ -36,8 +36,55 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  float   mean_number;
+  float median_number;
+  int  maximum_number;
+  int  minimum_number;
   /* Statistics and Printing Functions Go Here */
+  
+  mean_number=find_mean(test,SIZE);
+  median_number=find_median(test,SIZE);
+  maximum_number=find_maximum(test,SIZE);
+  minimum_number=find_minimum(test,SIZE);
 
 }
 
+
 /* Add other Implementation File Code Here */
+
+void print_array(unsigned char *ptr,unsigned int length) 
+{
+	
+	
+}
+
+unsigned char  find_median(unsigned char *ptr,unsigned int length) 	
+{
+	
+}
+
+unsigned char 	  find_mean(unsigned char*ptr,unsigned int length)
+{
+
+}
+
+unsigned char find_maximum(unsigned char *ptr,unsigned int length)
+{
+
+}
+
+unsigned char find_minimum(unsigned char *ptr,unsigned int length)
+{
+
+}
+
+void 		   sort_array(unsigned char *ptr, unsigned int length)
+{
+
+}
+
+void print_statistics(unsigned char mini, unsigned char max,
+				   		 unsigned char mean, unsigned char median)
+{
+
+}
