@@ -41,50 +41,114 @@ void main() {
   int  maximum_number;
   int  minimum_number;
   /* Statistics and Printing Functions Go Here */
-  
+  print_array(test,SIZE);
   mean_number=find_mean(test,SIZE);
   median_number=find_median(test,SIZE);
   maximum_number=find_maximum(test,SIZE);
   minimum_number=find_minimum(test,SIZE);
-
+  sort_array(test,SIZE);
+  printf("\n\n the array after sort is: \n");
+  print_array(test,SIZE);
+  print_statistics(minimum_number,maximum_number,mean_number,median_number);
 }
 
 
 /* Add other Implementation File Code Here */
 
-void print_array(unsigned char *ptr,unsigned int length) 
+void print_array(unsigned char *array,unsigned int length) 
 {
+		for (int i=0;i<length;i++)			// iteration from the first element of array to end to print all data 
+	{
+		if (i%10==0 && (i !=0))
+			printf("\n");
+		printf("%d\t",array[i]);			// use printf() to print the data
+		
+	}
 	
+}
+
+unsigned char  find_median(unsigned char *array,unsigned int length) 	
+{
+		int num1,num2,num3;           // variables to get the middle value from array
+	unsigned char median=0;
 	
-}
-
-unsigned char  find_median(unsigned char *ptr,unsigned int length) 	
-{
+	// use modulus operation to check if the size is even or odd
+	if (length%2==0)  								// the length of array is even
+	{
+		num1=length/2;	
+		num2=num1+1;
+		median=(array[num1]+array[num2])/2; 		/* sum two middle number then divide by 2 
+													   Ex: if length is 40>> (array[20]+array[21])/2  */
+	}
+	else						  // the length of array is odd
+	{
+		num3=(length/2)+1;
+		median=array[num3];
+	}
 	
+	return median;
 }
 
-unsigned char 	  find_mean(unsigned char*ptr,unsigned int length)
+unsigned char 	  find_mean(unsigned char*array,unsigned int length)
 {
-
+	int sum=0; 							// to get summation of all element in array
+	unsigned char mean;		// the average of array
+	for (int i=0;i<length;i++)
+	{
+		sum+=array[i];
+	}
+	mean= sum/length;
+	return mean;
 }
 
-unsigned char find_maximum(unsigned char *ptr,unsigned int length)
+unsigned char find_maximum(unsigned char *array,unsigned int length)
 {
-
+	unsigned char searche=array[0];  		// variable to compare with elements and initialed by first element
+	for (int i=1;i<length;i++)
+	{
+		if (searche>array[i]) 		// check which is bigger
+		{
+			searche=array[i]; 		//store the big value 
+		}
+	}
+	return searche;
 }
 
-unsigned char find_minimum(unsigned char *ptr,unsigned int length)
+unsigned char find_minimum(unsigned char *array,unsigned int length)
 {
-
+	unsigned char searche=array[0];			// variable to compare with elements and initialed by first element
+	for (int i=1;i<length;i++)
+	{
+		if (searche<array[i])				// check which is smaller
+		{
+			searche=array[i];				//store the small value
+		}
+	}
+	return searche;
 }
 
-void 		   sort_array(unsigned char *ptr, unsigned int length)
+void 		   sort_array(unsigned char *array, unsigned int length)
 {
-
+	for (int i=0;i<length;i++)					// first loop to initiate sort every time
+	{
+		for (int j=0;j<length-i-1;j++)			// second loop to sort the array 
+		{
+			if ( array[j]<array[j+1] )
+			{int temp=array[j+1]; 			// third variable to store data and return back 
+				array[j+1]=array[j];
+				array[j]=temp;
+			}
+		}
+	}
 }
 
 void print_statistics(unsigned char mini, unsigned char max,
 				   		 unsigned char mean, unsigned char median)
 {
-
+		// this function use only to print the statistics of the array
+	printf("\n\n");
+	printf("the minimum number is %d \n",mini);
+	printf("the maximum number is %d \n",max);
+	printf("the mean number is %d \n",mean);
+	printf("the median number is %d \n",median);
 }
